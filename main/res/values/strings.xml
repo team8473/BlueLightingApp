@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Blue Lightning Path Builder</string>
+    <string name="title_activity_second">SecondActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="button">Button</string>
+    <string name="right_encoder">Right Encoder</string>
+    <string name="left_encoder">Left Encoder</string>
+    <string name="calculate">Calculate</string>
+</resources>

@@ -38,6 +38,7 @@ public class FirstPageActivity extends AppCompatActivity {
                 goToCurveTurn();
     }
 });
+        
     }
 
     private void goToEncoderInches() {

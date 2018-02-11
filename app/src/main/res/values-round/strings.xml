@@ -1,0 +1,8 @@
+<resources>
+    <string name="hello_world">Hello Round World!</string>
+
+    <string-array name="direction_arrays">
+        <item>Right</item>
+        <item>Left</item>
+    </string-array>
+</resources>

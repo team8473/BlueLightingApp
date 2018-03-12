@@ -1,5 +1,7 @@
 package com.example.wahle.stuff;
 
+import static com.example.wahle.stuff.TestActivity.ball;
+
 public class Path {
     private static final double ROBOT_WIDTH = 17.2;
     private static final double WHEEL_DIAMETER = 4.0;
@@ -45,11 +47,19 @@ public class Path {
 
     public void addStraight(double distance, double speed) {
         //distance = convertDistance(distance);
-
-        leftDistance1 = distance;
-        rightDistance1 = distance;
-        leftSpeed = speed;
-        rightSpeed = speed;
+        switch (ball){
+            case IS_RED_BALL:
+                leftDistance1 = distance - 4;
+                rightDistance1 =distance - 4;
+                leftSpeed = speed;
+                rightSpeed = speed;
+                break;
+            default:
+                leftDistance1 = distance;
+                rightDistance1 = distance;
+                leftSpeed = speed;
+                rightSpeed = speed;
+        }
     }
 
     public double convertDistance(double angle, double radius) {

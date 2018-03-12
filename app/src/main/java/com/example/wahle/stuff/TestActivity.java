@@ -24,16 +24,21 @@ public class TestActivity extends AppCompatActivity {
     Path path = new Path();
     String newXString, newYString, newRadius, newSpeed;
     Path hi;
+    double Test = 0.0;
+
+    public enum Ball {
+        IS_RED_BALL, IS_BLUE_BALL
+    }
+    public static Ball ball;
+
+    public static final boolean BLUE_BALL = (ball == Ball.IS_BLUE_BALL);
+    public static final boolean RED_BALL = (ball == Ball.IS_RED_BALL);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
 
-        final EditText x = findViewById(R.id.x);
-        final EditText y = findViewById(R.id.y);
-        final EditText r = findViewById(R.id.r);
-        final EditText s = findViewById(R.id.s);
         final Button b = findViewById(R.id.button);
         tv = findViewById(R.id.textView3);
         tv.setMovementMethod(new ScrollingMovementMethod());
@@ -42,38 +47,32 @@ public class TestActivity extends AppCompatActivity {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-
-                String speedString = s.getText().toString();
-                Double newSpeed = Double.parseDouble(speedString);
-
-                String xString = x.getText().toString();
-                Double newXString = Double.parseDouble(xString);
-
-                String yString = y.getText().toString();
-                Double newYString = Double.parseDouble(yString);
-
-                String radiusString = r.getText().toString();
-                Double newRadius = Double.parseDouble(radiusString);
-
-                buildPath(newXString, newYString, newRadius, newSpeed);
+                if (Test == 0.0) {
+                    ball = Ball.IS_RED_BALL;
+                    buildPath(1, 2, 3, 4);
+                    Test += 1.0;
+                } else if (Test == 1.0) {
+                    ball = Ball.IS_BLUE_BALL;
+                    buildPath(1, 2, 3, 4);
+                    Test -= 1.0;
+                }
 
                 tv.setText("Right Distance: " + rightDistance1 +
                         "\n Left Disitance: " + leftDistance1  +
-                        "\n Right Distance: " + rightDistance2 +
-                        "\n Left Disitance: " + leftDistance2  +
+                        "\n Right Distance: " + rightDistance1 +
+                        "\n Left Disitance: " + leftDistance1  +
                         "\n Right Distance: " + rightDistance3 +
                         "\n Left Disitance: " + leftDistance3);
-
             }
         });
     }
 
-    public Path buildPath(Double x, Double y, Double r, Double s) {
+    public Path buildPath(double x, double y, double r, double s) {
         ArrayList<PathBuilder.Waypoint> sWaypoints = new ArrayList();
         sWaypoints.add(new PathBuilder.Waypoint(24,49,0,0));
-        sWaypoints.add(new PathBuilder.Waypoint(24,85,10,12));
+        sWaypoints.add(new PathBuilder.Waypoint(24,85,0,12));
         sWaypoints.add(new PathBuilder.Waypoint(10,85,0,12));
 
-        return hi = PathBuilder.buildPathFromWaypoints(sWaypoints);
+        return PathBuilder.buildPathFromWaypoints(sWaypoints, "RED");
     }
 }

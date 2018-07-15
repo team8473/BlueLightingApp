@@ -2,7 +2,6 @@ package com.example.wahle.stuff;
 
 import java.util.List;
 
-import com.example.wahle.stuff.Path;
 import com.example.wahle.stuff.math.RigidTransform2d;
 import com.example.wahle.stuff.math.Rotation2d;
 import com.example.wahle.stuff.math.Translation2d;
@@ -94,7 +93,7 @@ public class PathBuilder {
         private void addToPath(Path p, String ball) {
             double pathLength = new Translation2d(end, start).norm();
             if (pathLength > kEpsilon) {
-                p.addStraight(pathLength, speed);
+                p.addStraight(pathLength);
             }
         }
     }
@@ -128,10 +127,10 @@ public class PathBuilder {
                 double angle = Translation2d.getAngle(a.slope, b.slope).getDegrees();
 
                 if(direction < 0) {
-                    p.addRightTurn(angle, radius, speed);
+                    p.addRightTurn(angle, radius);
                 }
                 else if(direction > 0) {
-                    p.addLeftTurn(angle, radius, speed);
+                    p.addLeftTurn(angle, radius);
                 }
             }
         }
